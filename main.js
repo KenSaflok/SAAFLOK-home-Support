@@ -26,6 +26,18 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // Close the mobile menu after navigation or when focus moves away with Escape.
+  const navToggle = document.getElementById('nav-toggle');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  navLinks.forEach(function (link) {
+    link.addEventListener('click', function () {
+      if (navToggle) navToggle.checked = false;
+    });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && navToggle) navToggle.checked = false;
+  });
+
   // ── Year
   document.getElementById('yr').textContent = new Date().getFullYear();
 
